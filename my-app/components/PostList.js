@@ -7,16 +7,22 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Zocial } from '@expo/vector-icons';
 import { EvilIcons } from '@expo/vector-icons';
 import CardPost from './CardPost';
-// import {launchImageLibrary} from 'react-native-image-picker'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Post() {
   const [post,setPost] = useState([])
   const [postTitle, setPostTitle]  = useState('')
   const [postBody, setPostBody]    = useState('')
   const [image,setImage]           = useState(null)
-
+  const [token, setToken]          = useState('')
   const [placement, setPlacement] = useState(undefined);
   const [open, setOpen] = useState(false);
+
+  AsyncStorage.getItem('token')
+  .then(data=>setToken(data))
+ 
+ 
 
   const openModal = placement => {
     setOpen(true);
@@ -24,13 +30,31 @@ export default function Post() {
   };
 
  const subMitPost =()=>{
-    console.log(postBody)
-   setOpen(false);
+    if(postTitle === '' || postBody === ''){
+      alert('required `title` and `body`')
+    }
+    else{
+      const data ={
+          title:  postTitle,
+          desc :  postBody
+      } 
+
+      fetch('http://192.168.0.103:7000/api/post',{
+        method:'POST',
+        headers:{
+          'Content-Type': 'application/json',
+           'token'        : `${token}`
+        },
+        body: JSON.stringify(data),
+  })
+
+    }
+    setOpen(false);
  }
 
 
   useEffect(()=>{
-      fetch('http://192.168.0.104:7000/api/post/findAll')
+      fetch('http://192.168.0.103:7000/api/post/findAll')
       .then(res=>res.json())
       .then(data=>{
         setPost(data.data)

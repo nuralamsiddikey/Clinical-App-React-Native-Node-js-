@@ -24,17 +24,16 @@ import {
    } from 'native-base';
 
 
-
 export default function Home() {
     const navigation = useNavigation()
+   
+
     return (
         <View >
             <View style={styles.container}>
-              <ScrollView>
+               <ScrollView>
                   
-                    <View style={styles.main_content}>
-                    
-
+                <View style={styles.main_content}>             
                     <HStack space={10} justifyContent="center">
 
                         <View>
@@ -56,10 +55,7 @@ export default function Home() {
                                         style={{marginTop:'10%',backgroundColor:'white',padding:10,borderRadius:50}}/>
                                         See blog</Center>
                                 </TouchableOpacity>
-
-                             
-                
-                              
+                           
                             </VStack>
                         </View>
 
@@ -67,40 +63,35 @@ export default function Home() {
                         <VStack>
                                 <TouchableOpacity style={styles.box}  onPress={()=>navigation.navigate("Post")}>
                                     <Center 
-                                    _text={{marginTop:'4%',color:'white'}}>
+                                        _text={{marginTop:'4%',color:'white'}}>
                                         <MaterialIcons name="post-add"
-                                         size={24} color="#00a8ff" 
-                                        
+                                         size={24} color="#00a8ff"        
                                          style={{marginTop:'10%',backgroundColor:'white',padding:10,borderRadius:50}}/>
                                          Share Problem</Center>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={styles.box}>
                                   <Center
-                                   _text={{marginTop:'4%',color:'white'}}>
-                                    <MaterialIcons name="date-range"
-                                      size={24} color="#7158e2"
-                                      style={{marginTop:'10%',backgroundColor:'white',padding:10,borderRadius:50}}/> 
-                                      Appoint doctor</Center>
+                                       _text={{marginTop:'4%',color:'white'}}>
+                                       <MaterialIcons name="date-range"
+                                       size={24} color="#7158e2"
+                                       style={{marginTop:'10%',backgroundColor:'white',padding:10,borderRadius:50}}/> 
+                                       Appoint doctor</Center>
 
                                 </TouchableOpacity>
-
-                               
-                                
+                          
                             </VStack>
                         </View>
 
                       </HStack>
                       <Specialist/>
                    </View>
-
                 </ScrollView>
 
 
                 <View style={styles.footer}>
                     <Footer />
                 </View>
-
             </View>
         </View>
     )
@@ -110,8 +101,7 @@ export default function Home() {
 const styles = StyleSheet.create({
     top:{
        width: '90%',
-       marginLeft: '5%',
-     
+       marginLeft: '5%',    
        borderBottomWidth: .5,
     },
     container: {
@@ -122,10 +112,9 @@ const styles = StyleSheet.create({
     },
     main_content:{
       paddingBottom:100,
-      width: '100%',
-      
-    
+      width: '100%',  
     },
+
     box:{
        height: 100,
        width:160 ,

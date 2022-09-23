@@ -9,7 +9,7 @@ export default function Doctor(props) {
     return (
         <View >
             <HStack style={styles.container}>
-                <Image style={styles.image} source={{ uri:`http://192.168.0.104:7000/${props.data.image}` }}  />
+                <Image style={styles.image} source={{ uri:`http://192.168.0.103:7000/${props.data.image}` }}  />
                  <View style={styles.right_content}>
                      <Text
                       style={{fontWeight:'600'}}

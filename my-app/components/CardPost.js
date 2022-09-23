@@ -3,8 +3,8 @@ import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack, NativeBa
 
 const CardPost = (props) => {
   
-  return <Box alignItems="center" style={{marginBottom:20}}>
-      <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
+  return <Box alignItems="center" style={{marginBottom:50,width:'100%'}}>
+      <Box style={{width:'100%'}} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
       borderColor: "coolGray.600",
       backgroundColor: "gray.700"
     }} _web={{
@@ -16,7 +16,7 @@ const CardPost = (props) => {
       {props.data.image &&   <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image source={{
-            uri: `http://192.168.0.104:7000/${props.data.image}`
+            uri: `http://192.168.0.103:7000/${props.data.image}`
           }} alt="image" />
           </AspectRatio>
           <Center bg="violet.500" _dark={{
@@ -29,9 +29,9 @@ const CardPost = (props) => {
             PHOTOS
           </Center>
         </Box>}
-        <Stack p="4" space={3}>
+        <Stack p="4" space={3}  style={{width:'100%'}}>
           <Stack space={2}>
-            <Heading size="md" ml="-1">
+            <Heading size="md" ml="-1" style={{width:'100%'}}>
               <Text>{props.data.title}</Text>
             </Heading>
             <Text fontSize="xs" _light={{

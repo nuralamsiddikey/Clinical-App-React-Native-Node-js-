@@ -1,7 +1,3 @@
-import { View, Text, StyleSheet,AsyncStorageStatic } from 'react-native'
-import React,{useEffect} from 'react'
-import { useNavigation } from "@react-navigation/native";
-
 import {
   Input,
   Icon,
@@ -14,6 +10,12 @@ import {
   HStack
 } from "native-base";
 
+
+
+import { View, Text, StyleSheet,AsyncStorageStatic } from 'react-native'
+import React,{useEffect} from 'react'
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Login() {
@@ -24,36 +26,36 @@ export default function Login() {
   const [alert2, setAlert2] = React.useState(false)
 
   const navigation = useNavigation()
-  
   const data ={email,password}
 
 
-  const handleInput = () => {
+  const handleInput = async() => {
    
-    // if (email === '' || password === '') {
-    //   setAlert(true)
-    // }
-    // else {
-    //   fetch('http://localhost:7000/api/user/login',{
-    //         method:'POST',
-    //         headers:{
-    //           'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //   })
-    //    .then(res=>res.json())
-    //    .then(data=>{
-    //        if(data.error == false){
-        ///   AsyncStorageStatic.setItem('token', data.token);
+    if (email === '' || password === '') {
+      setAlert(true)
+    }
+    else {
+      fetch('http://192.168.0.103:7000/api/user/login',{
+            method:'POST',
+            headers:{
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+      })
+       .then(res=>res.json())
+       .then(data=>{
+           if(data.error == false){
+          
+            AsyncStorage.setItem('token', data.token)
             return (navigation.navigate('Home'))
-    //        }
-    //        else{
-    //         setAlert2(true)
-    //        }
-    //    })
+           }
+           else{
+            setAlert2(true)
+           }
+       })
        
      
-    // }
+    }
   }
 
 
