@@ -10,8 +10,6 @@ import {
   HStack
 } from "native-base";
 
-
-
 import { View, Text, StyleSheet,AsyncStorageStatic } from 'react-native'
 import React,{useEffect} from 'react'
 import { useNavigation } from "@react-navigation/native";
@@ -47,7 +45,7 @@ export default function Login() {
            if(data.error == false){
           
             AsyncStorage.setItem('token', data.token)
-            return (navigation.navigate('Home'))
+             return (navigation.navigate('Home'))
            }
            else{
             setAlert2(true)

@@ -1,11 +1,10 @@
 const postModel  = require('../models/Post')
 
-
 const post = async(req,res)=>{
     try{
         
-        // const image = req.file.filename
-         const userId = req.user._id
+       //  const image = req.file.filename
+         const userId = req.user.user._id
          const newPost = await postModel.create({...req.body,userId})
 
          res.status(201).json({
@@ -13,13 +12,14 @@ const post = async(req,res)=>{
             data: newPost,
             error: false
          })
+        
     }
     catch(err){
         console.log(err)
     }
 }
 
-
+ 
 const findAllPost = async(req,res)=>{
     try{
          const post = await postModel.find({})

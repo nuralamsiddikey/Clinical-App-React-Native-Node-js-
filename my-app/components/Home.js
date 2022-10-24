@@ -11,6 +11,7 @@ import React from 'react'
 import Footer from './Footer'
 import TopHome from './TopHome'
 import Specialist from './Specialist'
+import BlogList from './BlogList'
 
 import { Fontisto } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -47,13 +48,15 @@ export default function Home() {
                                          Find doctor</Center>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.box}>
+                                <TouchableOpacity style={styles.box}   onPress={()=>navigation.navigate('BlogList')}>
                                     <Center 
-                                    _text={{marginTop:'4%',color:'white'}}>
+                                    
+                                      _text={{marginTop:'4%',color:'white'}}>
                                         <FontAwesome5 name="blog" 
                                         size={24} color="#3c40c6" 
                                         style={{marginTop:'10%',backgroundColor:'white',padding:10,borderRadius:50}}/>
-                                        See blog</Center>
+                                        Blog
+                                    </Center>
                                 </TouchableOpacity>
                            
                             </VStack>

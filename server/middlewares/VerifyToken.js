@@ -19,20 +19,18 @@ const userVerify = (req, res, next) => {
 };
 
 
-
-// const patientDoctorVerify = (req,res,next)=>{
-//     userVerify(req,res,()=>{
-//          if((req.user.user.isDoctor === true || req.user.user.isDoctor === false){
-
-//          }
-//     })
-   
-// }
-
+const doctorVerify = (req,res,next)=>{
+    userVerify(req,res,()=>{
+        if(req.user.user.isDoctor === true){
+             next()
+        }
+    })
+}
 
 
 
 module.exports = {
-    userVerify
+    userVerify,
+    doctorVerify
    
 }

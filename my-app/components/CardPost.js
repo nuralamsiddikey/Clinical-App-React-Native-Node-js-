@@ -1,12 +1,14 @@
 import React from "react";
-import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack, NativeBaseProvider } from "native-base";
+import { Box, Heading, AspectRatio, Image, Text, Center, HStack, Stack,TextArea } from "native-base";
+import Comment from "./CommentActionSheet";
 
 const CardPost = (props) => {
   
-  return <Box alignItems="center" style={{marginBottom:50,width:'100%'}}>
-      <Box style={{width:'100%'}} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
+  return <Box  alignItems="center" style={{marginBottom:50,minWidth:'100%'}}>
+      <Box style={{minWidth:'100%'}} rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
       borderColor: "coolGray.600",
-      backgroundColor: "gray.700"
+      backgroundColor: "yellow",
+      width:'100%'
     }} _web={{
       shadow: 2,
       borderWidth: 0
@@ -16,7 +18,7 @@ const CardPost = (props) => {
       {props.data.image &&   <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
             <Image source={{
-            uri: `http://192.168.0.103:7000/${props.data.image}`
+            uri: `http://192.168.55.184:7000/${props.data.image}`
           }} alt="image" />
           </AspectRatio>
           <Center bg="violet.500" _dark={{
@@ -29,31 +31,22 @@ const CardPost = (props) => {
             PHOTOS
           </Center>
         </Box>}
-        <Stack p="4" space={3}  style={{width:'100%'}}>
+        <Stack p="4" space={3}  >
           <Stack space={2}>
-            <Heading size="md" ml="-1" style={{width:'100%'}}>
+            <Heading size="md" ml="-1" >
               <Text>{props.data.title}</Text>
             </Heading>
-            <Text fontSize="xs" _light={{
-            color: "violet.500"
-          }} _dark={{
-            color: "violet.400"
-          }} fontWeight="500" ml="-0.5" mt="-1">
-              The Silicon Valley of India.
-            </Text>
+           
           </Stack>
           <Text fontWeight="400">
             <Text>{props.data.desc}</Text>
           </Text>
+
           <HStack alignItems="center" space={4} justifyContent="space-between">
-            <HStack alignItems="center">
-              <Text color="coolGray.600" _dark={{
-              color: "warmGray.200"
-            }} fontWeight="400">
-                6 mins ago
-              </Text>
-            </HStack>
+             <Comment data = {props.data}/>
+             <Text>5 min ago</Text>
           </HStack>
+
         </Stack>
       </Box>
     </Box>;

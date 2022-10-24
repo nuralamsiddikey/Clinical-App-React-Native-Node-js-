@@ -1,6 +1,6 @@
 const route  = require('express').Router()
 const upload = require('../middlewares/multer')
-const {userVerify}     = require('../middlewares/VerifyToken')
+const {userVerify,doctorVerify}     = require('../middlewares/VerifyToken')
 
 //user route
 const {register,login,findUser} = require('../controllers/user')
@@ -16,8 +16,19 @@ route.post('/post',userVerify,upload.single('image'),post)
 route.get('/post/findAll',findAllPost)
 
 
+//post comment route
+const {postComment}  = require('../controllers/postComment')
+route.post('/post/comment',userVerify,postComment)
 
 
+
+
+
+
+//blog route
+const{createBlog,getBlog} = require('../controllers/blog')
+route.post('/blog/create',doctorVerify,createBlog)
+route.get('/blog/get',getBlog)
 
 module.exports  = route
 
